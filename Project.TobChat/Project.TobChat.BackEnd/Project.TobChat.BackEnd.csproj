@@ -47,11 +47,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\TobChatDbContext.cs" />
+    <Compile Include="Migrations\201808031849552_InitialDb.cs" />
+    <Compile Include="Migrations\201808031849552_InitialDb.Designer.cs">
+      <DependentUpon>201808031849552_InitialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808031900582_UpdatedRelationship.cs" />
+    <Compile Include="Migrations\201808031900582_UpdatedRelationship.Designer.cs">
+      <DependentUpon>201808031900582_UpdatedRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Enrollment.cs" />
+    <Compile Include="Model\Instructor.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\Schedule.cs" />
+    <Compile Include="Model\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Model\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
     <Folder Include="Utilities\" />
@@ -59,6 +75,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808031849552_InitialDb.resx">
+      <DependentUpon>201808031849552_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031900582_UpdatedRelationship.resx">
+      <DependentUpon>201808031900582_UpdatedRelationship.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
