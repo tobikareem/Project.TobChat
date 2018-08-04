@@ -3,7 +3,7 @@ using Project.TobChat.BackEnd.Model;
 
 namespace Project.TobChat.BackEnd.Data
 {
-    class TobChatDbContext : DbContext
+    public class TobChatDbContext : DbContext
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Department> Departments { get; set; }
