@@ -14,6 +14,7 @@ namespace Project.TobChat.BackEnd.Model
         public string Email { get; set; }
         public string Password { get; set; }
 
+        public ICollection<Department> Departments { get; set; }
         public virtual Instructor Instructor { get; set; }
         public virtual Student Student { get; set; }
         public ICollection<Role> Roles { get; set; }

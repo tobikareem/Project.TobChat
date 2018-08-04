@@ -7,10 +7,12 @@ namespace Project.TobChat.BackEnd.Model
     {
         [ForeignKey("Person")]
         public int Id { get; set; }
-
+        [ForeignKey("Department")]
+        public int DepartmentId { get; set; }
         public string Speciality { get; set; }
 
-        public ICollection<Department> Departments { get; set; }
+
+        public virtual Department Department { get; set; }
         public virtual Person Person { get; set; }
         public ICollection<Course> Courses { get; set; }
     }

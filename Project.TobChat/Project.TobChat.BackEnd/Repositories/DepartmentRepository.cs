@@ -24,7 +24,7 @@ namespace Project.TobChat.BackEnd.Repositories
             {
                 var update = context.Departments.First(d => d.Id == obj.Id);
                 update.DeptName = obj.DeptName;
-                update.InstructorId = obj.InstructorId;
+                update.Adminstrator = obj.Adminstrator;
 
                 context.SaveChanges();
             }

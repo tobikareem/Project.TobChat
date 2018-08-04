@@ -11,116 +11,107 @@ using Project.TobChat.BackEnd.Model;
 
 namespace Project.TobChat.WebMvc.Controllers
 {
-    public class PeopleController : Controller
+    public class RolesController : Controller
     {
         private TobChatDbContext db = new TobChatDbContext();
 
-        // GET: People
+        // GET: Roles
         public ActionResult Index()
         {
-            var people = db.People.Include(p => p.Instructor).Include(p => p.Student);
-            return View(people.ToList());
+            return View(db.Roles.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Roles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(role);
         }
 
-        // GET: People/Create
+        // GET: Roles/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality");
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major");
             return View();
         }
 
-        // POST: People/Create
+        // POST: Roles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Create([Bind(Include = "Id,RoleName,Department,Description")] Role role)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
+                db.Roles.Add(role);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            return View(role);
         }
 
-        // GET: People/Edit/5
+        // GET: Roles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            return View(role);
         }
 
-        // POST: People/Edit/5
+        // POST: Roles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,RoleName,Department,Description")] Role role)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                db.Entry(role).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            return View(role);
         }
 
-        // GET: People/Delete/5
+        // GET: Roles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(role);
         }
 
-        // POST: People/Delete/5
+        // POST: Roles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
+            Role role = db.Roles.Find(id);
+            db.Roles.Remove(role);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

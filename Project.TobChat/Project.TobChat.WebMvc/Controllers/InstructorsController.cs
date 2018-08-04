@@ -11,116 +11,116 @@ using Project.TobChat.BackEnd.Model;
 
 namespace Project.TobChat.WebMvc.Controllers
 {
-    public class PeopleController : Controller
+    public class InstructorsController : Controller
     {
         private TobChatDbContext db = new TobChatDbContext();
 
-        // GET: People
+        // GET: Instructors
         public ActionResult Index()
         {
-            var people = db.People.Include(p => p.Instructor).Include(p => p.Student);
-            return View(people.ToList());
+            var instructors = db.Instructors.Include(i => i.Department).Include(i => i.Person);
+            return View(instructors.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Instructors/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Instructor instructor = db.Instructors.Find(id);
+            if (instructor == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(instructor);
         }
 
-        // GET: People/Create
+        // GET: Instructors/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality");
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major");
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "DeptName");
+            ViewBag.Id = new SelectList(db.People, "Id", "FirstName");
             return View();
         }
 
-        // POST: People/Create
+        // POST: Instructors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Create([Bind(Include = "Id,DepartmentId,Speciality")] Instructor instructor)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
+                db.Instructors.Add(instructor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "DeptName", instructor.DepartmentId);
+            ViewBag.Id = new SelectList(db.People, "Id", "FirstName", instructor.Id);
+            return View(instructor);
         }
 
-        // GET: People/Edit/5
+        // GET: Instructors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Instructor instructor = db.Instructors.Find(id);
+            if (instructor == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "DeptName", instructor.DepartmentId);
+            ViewBag.Id = new SelectList(db.People, "Id", "FirstName", instructor.Id);
+            return View(instructor);
         }
 
-        // POST: People/Edit/5
+        // POST: Instructors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,DepartmentId,Speciality")] Instructor instructor)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                db.Entry(instructor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "DeptName", instructor.DepartmentId);
+            ViewBag.Id = new SelectList(db.People, "Id", "FirstName", instructor.Id);
+            return View(instructor);
         }
 
-        // GET: People/Delete/5
+        // GET: Instructors/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Instructor instructor = db.Instructors.Find(id);
+            if (instructor == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(instructor);
         }
 
-        // POST: People/Delete/5
+        // POST: Instructors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
+            Instructor instructor = db.Instructors.Find(id);
+            db.Instructors.Remove(instructor);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

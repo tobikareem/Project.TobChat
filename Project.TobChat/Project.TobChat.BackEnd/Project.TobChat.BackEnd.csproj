@@ -57,6 +57,18 @@
     <Compile Include="Migrations\201808031900582_UpdatedRelationship.Designer.cs">
       <DependentUpon>201808031900582_UpdatedRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808042207511_UpdateDeptInstrRelationships.cs" />
+    <Compile Include="Migrations\201808042207511_UpdateDeptInstrRelationships.Designer.cs">
+      <DependentUpon>201808042207511_UpdateDeptInstrRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808042238399_UpdateDeptAdminNames.cs" />
+    <Compile Include="Migrations\201808042238399_UpdateDeptAdminNames.Designer.cs">
+      <DependentUpon>201808042238399_UpdateDeptAdminNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808042258180_StudentMajor.cs" />
+    <Compile Include="Migrations\201808042258180_StudentMajor.Designer.cs">
+      <DependentUpon>201808042258180_StudentMajor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Department.cs" />
@@ -97,6 +109,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808031900582_UpdatedRelationship.resx">
       <DependentUpon>201808031900582_UpdatedRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808042207511_UpdateDeptInstrRelationships.resx">
+      <DependentUpon>201808042207511_UpdateDeptInstrRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808042238399_UpdateDeptAdminNames.resx">
+      <DependentUpon>201808042238399_UpdateDeptAdminNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808042258180_StudentMajor.resx">
+      <DependentUpon>201808042258180_StudentMajor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

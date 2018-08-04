@@ -1,126 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Project.TobChat.BackEnd.Data;
 using Project.TobChat.BackEnd.Model;
 
 namespace Project.TobChat.WebMvc.Controllers
 {
-    public class PeopleController : Controller
+    public class DepartmentsController : Controller
     {
         private TobChatDbContext db = new TobChatDbContext();
 
-        // GET: People
+        // GET: Departments
         public ActionResult Index()
         {
-            var people = db.People.Include(p => p.Instructor).Include(p => p.Student);
-            return View(people.ToList());
+            var departments = db.Departments.Include(d => d.Person);
+            return View(departments.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Departments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Department department = db.Departments.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(department);
         }
 
-        // GET: People/Create
+        // GET: Departments/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality");
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major");
+            ViewBag.Adminstrator = new SelectList(db.People, "Id", "FirstName");
             return View();
         }
 
-        // POST: People/Create
+        // POST: Departments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Create([Bind(Include = "Id,DeptName,Adminstrator")] Department department)
         {
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
+                db.Departments.Add(department);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.Adminstrator = new SelectList(db.People, "Id", "FirstName", department.Adminstrator);
+            return View(department);
         }
 
-        // GET: People/Edit/5
+        // GET: Departments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Department department = db.Departments.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.Adminstrator = new SelectList(db.People, "Id", "FirstName", department.Adminstrator);
+            return View(department);
         }
 
-        // POST: People/Edit/5
+        // POST: Departments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,Password")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,DeptName,Adminstrator")] Department department)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                db.Entry(department).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Instructors, "Id", "Speciality", person.Id);
-            ViewBag.Id = new SelectList(db.Students, "Id", "Major", person.Id);
-            return View(person);
+            ViewBag.Adminstrator = new SelectList(db.People, "Id", "FirstName", department.Adminstrator);
+            return View(department);
         }
 
-        // GET: People/Delete/5
+        // GET: Departments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            Department department = db.Departments.Find(id);
+            if (department == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(department);
         }
 
-        // POST: People/Delete/5
+        // POST: Departments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
+            Department department = db.Departments.Find(id);
+            db.Departments.Remove(department);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

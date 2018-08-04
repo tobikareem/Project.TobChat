@@ -6,12 +6,12 @@ namespace Project.TobChat.BackEnd.Model
     {
         [ForeignKey("Person")]
         public int Id { get; set; }
-        public string Major { get; set; }
-        [ForeignKey("Schedule")]
-        public int ScheduleId { get; set; }
+        [ForeignKey("Department")]
+        public int Major { get; set; }
+        
         public int YearLevel { get; set; }
-
-        public virtual Schedule Schedule { get; set; }
+        
         public virtual Person Person { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

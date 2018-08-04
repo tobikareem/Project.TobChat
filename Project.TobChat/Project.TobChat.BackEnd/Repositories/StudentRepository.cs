@@ -25,7 +25,6 @@ namespace Project.TobChat.BackEnd.Repositories
             {
                 var update = context.Students.First(s => s.Id == obj.Id);
                 update.Major = obj.Major;
-                update.ScheduleId = obj.ScheduleId;
                 update.YearLevel = obj.YearLevel;
 
                 context.SaveChanges();
