@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="799330a8-d3ff-406a-8aea-a6e4229e117e"
-    Publisher="CN=4222cce2-939d-4fc7-ac2d-57fa842922d7"
+    Name="3db727a6-4eb1-4b43-beef-739821cc6cc4"
+    Publisher="CN=5bc64f1d-8a36-40ec-be40-e198932e959a"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Project.TobChat.Mobile.UWP</DisplayName>
-    <PublisherDisplayName>4222cce2-939d-4fc7-ac2d-57fa842922d7</PublisherDisplayName>
+    <PublisherDisplayName>5bc64f1d-8a36-40ec-be40-e198932e959a</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

@@ -21,7 +21,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>11.3</string>
+	<string>11.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>Project.TobChat.Mobile</string>
 	<key>CFBundleIdentifier</key>

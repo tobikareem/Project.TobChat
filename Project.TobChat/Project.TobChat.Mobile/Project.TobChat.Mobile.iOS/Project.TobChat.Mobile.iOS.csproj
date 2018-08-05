@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E715F667-0244-4A35-B224-C3730404F4AE}</ProjectGuid>
+    <ProjectGuid>{8E22E502-3AC4-4964-9A9D-FFBF7B765E1D}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Project.TobChat.Mobile.iOS</RootNamespace>
@@ -119,12 +119,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Project.TobChat.Mobile\Project.TobChat.Mobile.csproj">
-      <Project>{20A2C306-79B5-40AC-AC4E-4BFABC6D35C0}</Project>
+      <Project>{606C90B4-41E4-40A3-82F0-9FAAC3FCB0A0}</Project>
       <Name>Project.TobChat.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
