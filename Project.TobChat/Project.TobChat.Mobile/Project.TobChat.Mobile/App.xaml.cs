@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Project.TobChat.Mobile
 {
@@ -13,7 +8,7 @@ namespace Project.TobChat.Mobile
 		{
 			InitializeComponent();
 
-			MainPage = new Project.TobChat.Mobile.MainPage();
+			MainPage = new Pages.SignIn();
 		}
 
 		protected override void OnStart ()

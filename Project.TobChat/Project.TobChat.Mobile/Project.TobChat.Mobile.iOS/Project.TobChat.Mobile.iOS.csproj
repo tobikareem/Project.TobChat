@@ -128,4 +128,7 @@
       <Name>Project.TobChat.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hofstra_image.jpg" />
+  </ItemGroup>
 </Project>
